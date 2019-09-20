@@ -339,9 +339,15 @@
 	float ton_pound(float ton){
 		return ton*2204.62;
 	}
+        float ton_lb(float ton){
+                return ton*2204.62;
+        }
 	float ton_ounce(float ton){
 		return ton*35274;
 	}
+        float ton_oz(float ton){
+                return ton*35274;
+        }
 
 	/*kg to ...*/
 	float kg_ton(float kg){
@@ -368,9 +374,15 @@
 	float kg_pound(float kg){
 		return kg*2.20462;
 	}
+        float kg_lb(float kg){
+                return kg*2.20462;
+        }
 	float kg_ounce(float kg){
 		return kg*35.274;
 	}
+        float kg_oz(float kg){
+                return kg*35.274;
+        }
 
 	/*g to ...*/
 	float g_ton(float g){
@@ -397,9 +409,15 @@
 	float g_pound(float g){
 		return g*0.00220462;
 	}
+        float g_lb(float g){
+                return g*0.00220462;
+        }
 	float g_ounce(float g){
 		return g*0.035274;
 	}
+        float g_oz(float g){
+                return g*0.035274;
+        }
 
 	/*mg to ...*/
 	float mg_ton(float mg){
@@ -426,9 +444,15 @@
 	float mg_pound(float mg){
 		return mg/453592.37;
 	}
+        float mg_lb(float mg){
+                return mg/453592.37;
+        }
 	float mg_ounce(float mg){
 		return mg/28349.523;
 	}
+        float mg_oz(float mg){
+                return mg/28349.523;
+        }
 
 	/*microg to ...*/
 	float microg_kg(float mg){
@@ -446,9 +470,15 @@
 	float microg_pound(float mg){
 		return mg/453600000;
 	}
+        float microg_lb(float mg){
+                return mg/453600000;
+        }
 	float microg_ounce(float mg){
 		return mg/28350000;
 	}
+        float microg_oz(float mg){
+                return mg/28350000;
+        }
 
 	/*imperialton to ...*/
 	float imperialton_ton(float it){
@@ -472,9 +502,15 @@
 	float imperialton_pound(float it){
 		return it*2240;
 	}
+        float imperialton_lb(float it){
+                return it*2240;
+        }
 	float imperialton_ounce(float it){
 		return it*35840;
 	}
+        float imperialton_oz(float it){
+                return it*35840;
+        }
 
 	/*USton to ...*/
 	float USton_ton(float us){
@@ -498,9 +534,15 @@
 	float USton_pound(float us){
 		return us*2000;
 	}
+        float USton_lb(float us){
+                return us*2000;
+        }
 	float USton_ounce(float us){
 		return us*32000;
 	}
+        float USton_oz(float us){
+                return us*32000;
+        }
 
 	/*stone to ...*/
 	float stone_ton(float s){
@@ -527,9 +569,15 @@
 	float stone_pound(float s){
 		return s*14;
 	}
+        float stone_lb(float s){
+                return s*14;
+        }
 	float stone_ounce(float s){
 		return s*224;
 	}
+        float stone_oz(float s){
+                return s*224;
+        }
 
 	/*pound or lb to ...*/
 	float pound_ton(float p){
@@ -583,7 +631,13 @@
 	float pound_ounce(float p){
 		return p*16;
 	}
+        float pound_oz(float p){
+                return p*16;
+        }
         float lb_ounce(float p){
+                return p*16;
+        }
+        float lb_oz(float p){
                 return p*16;
         }
 
@@ -591,30 +645,57 @@
 	float ounce_ton(float o){
 		return o/35273.962;
 	}
+        float oz_ton(float o){
+                return o/35273.962;
+        }
 	float ounce_kg(float o){
 		return o/35.274;
 	}
+        float oz_kg(float o){
+                return o/35.274;
+        }
 	float ounce_g(float o){
 		return o*28.3495;
 	}
+        float oz_g(float o){
+                return o*28.3495;
+        }
 	float ounce_mg(float o){
 		return o*28349.523;
 	}
+        float oz_mg(float o){
+                return o*28349.523;
+        }
 	float ounce_microg(float o){
 		return o*28350000;
 	}
+        float oz_microg(float o){
+                return o*28350000;
+        }
 	float ounce_imperialton(float o){
 		return o/35840;
 	}
+        float oz_imperialton(float o){
+                return o/35840;
+        }
 	float ounce_USton(float o){
 		return o/32000;
 	}
+        float oz_USton(float o){
+                return o/32000;
+        }
 	float ounce_stone(float o){
 		return o/224;
 	}
+        float oz_stone(float o){
+                return o/224;
+        }
 	float ounce_pound(float o){
 		return o/16;
 	}
+        float oz_pound(float o){
+                return o/16;
+        }
 
 /*TIME*/
 
@@ -1104,7 +1185,7 @@
 	float sqyard_sqkm(float s){
 		return s/1196000;
 	}
-	float sqyard_sqm(float s){
+ 	float sqyard_sqm(float s){
 		return s/1.196;
 	}
 	float sqyard_sqmile(float s){
@@ -1379,4 +1460,72 @@
 	float radian_gradian(float d){
 		return d*63.662;
 	}
+
+/*PRESSURE*/
+
+	/*atm to ...*/
+	float atm_bar(float atm){
+		return atm*1.01325;
+	}
+	float atm_pascal(float atm){
+		return atm*101325;
+	}
+	float atm_torr(float atm){
+		return atm*760;
+	}
+
+	/*bar to ...*/
+	float bar_atm(float b){
+		return b/1.013;
+	}
+	float bar_pascal(float b){
+		return b*100000;
+	}
+	float bar_torr(float b){
+		return b*750.062;
+	}
+
+	/*pascal to ...*/
+	float pascal_atm(float p){
+		return p/101325;
+	}
+	float pascal_bar(float p){
+		return p/100000;
+	}
+	float pascal_torr(float p){
+		return p*0.00750062;
+	}
+
+	float gallon_l(float g){
+		return g*3.78541;
+	}
+
+	float l_gallon(float l){
+		return l*0.264172;
+	}
+
+	float imperialgallon_l(float i){
+		return i*4.54609;
+	}
+
+	float l_imperialgallon(float l){
+		return l*0.219969;
+	}
+
+	float mmHg_pascal(float m){
+		return m*133.322;
+	}
+
+	float pascal_mmHg(float p){
+		return p*0.00750062;
+	}
+
+	float hp_kw(float h){
+		return h*0.7457;
+	}
+
+	float kw_hp(float k){
+		return k*1.34102;
+	}
+
 
