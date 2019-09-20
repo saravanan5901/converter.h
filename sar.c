@@ -6,10 +6,10 @@ int main(char* from_curr,char* to_curr)
     PyObject *pArgs, *pValue;
     
     Py_Initialize();
-    pName = PyString_FromString('Currencyconversion.py');
+    pName = PyBytes_FromString("Currencyconversion.py");
     /* Error checking of pName left out */
 
-    pModule = PyImport_Import(pName);
+    pModule = PyImport_Import("requests");
     Py_DECREF(pName);
 
     if (pModule != NULL) 
@@ -19,8 +19,8 @@ int main(char* from_curr,char* to_curr)
 
         if (pFunc && PyCallable_Check(pFunc)) 
         {
-            pystr1=PyString_FromString(from_curr);
-            pystr2=PyString_FromString(to_curr);
+            pystr1=PyBytes_FromString("USD");
+            pystr2=PyBytes_FromString("INR");
             pArgs = PyTuple_New(2);
             PyTuple_SetItem(pArgs, 0, pystr1);
             PyTuple_SetItem(pArgs, 1, pystr2);
@@ -28,7 +28,7 @@ int main(char* from_curr,char* to_curr)
             pValue = PyObject_CallObject(pFunc, pArgs);
             Py_DECREF(pArgs);
             if (pValue != NULL) {
-                printf("Result of call: %ld\n", PyInt_AsLong(pValue));
+                printf("Result of call: %ld\n", PyLong_AsLong(pValue));
                 Py_DECREF(pValue);
             }
             else {

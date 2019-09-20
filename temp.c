@@ -1,23 +1,62 @@
 #include <Python.h>
 
-int main()
+int main(int argc, char *argv[])
 {
-  Py_Initialize();
-  PyRun_SimpleString("import requests, json\n"
-					 "api_key = '9d75b71d988c8e1bf6ef48a4d1d902cb'\n"
-					 "base_url = 'http://api.openweathermap.org/data/2.5/weather?'\n"
-					 "city_name = input('Enter city name : ')\n"
-					 "complete_url = base_url + 'appid=' + api_key + '&q=' + city_name\n" 
-					 "response = requests.get(complete_url)\n"
-					 "x = response.json()\n"
-					 "if x['cod'] != '404':\n"
-					 "\ty = x['main'] \n"
-					 "\tcurrent_temperature = y['temp']\n\tcurrent_pressure = y['pressure']\n\tcurrent_humidity = y['humidity']\n\tz = x['weather']\n"
-					 "\tweather_description = z[0]['description']\n" 
-					 "\tprint(''' Weather Description : ''' + str(weather_description) + '''\n Temperature(in K) : ''' + str(current_temperature) +'''\n Atmospheric Pressure :''' + str(current_pressure) + '''\n Humidity :''' + str(current_humidity))\n"
-					 "else:\n"
-					 "\tprint('City Not Found')\n");
-  Py_FinalizeEx();
-  return 0;
+    PyObject *pystr1, *pystr2, *pName, *pModule, *pDict, *pFunc;
+    PyObject *pArgs, *pValue;
+    
+  if (argc < 1) {
+        fprintf(stderr,"Usage: call pythonfile funcname [args]\n");
+        return 1;
+    }
+
+    Py_Initialize();
+    pName = PyUnicode_DecodeFSDefault("Currencyconversion.py");
+    /* Error checking of pName left out */
+
+    pModule = PyImport_Import(pName);
+    Py_DECREF(pName);
+
+    if (pModule != NULL) {
+        pFunc = PyObject_GetAttrString(pModule, "con");
+        /* pFunc is a new reference */
+
+        if (pFunc && PyCallable_Check(pFunc)) {
+            pystr1=PyBytes_FromString("USD");
+            pystr2=PyBytes_FromString("INR");
+            PyTuple_SetItem(pArgs, 0, pystr1);
+            PyTuple_SetItem(pArgs, 1, pystr2);
+            pValue = PyObject_CallObject(pFunc, pArgs);
+            
+            Py_DECREF(pArgs);
+            if (pValue != NULL) {
+                printf("Result of call: %ld\n", PyLong_AsLong(pValue));
+                Py_DECREF(pValue);
+            }
+            else {
+                Py_DECREF(pFunc);
+                Py_DECREF(pModule);
+                PyErr_Print();
+                fprintf(stderr,"Call failed\n");
+                return 1;
+            }
+        }
+        else {
+            if (PyErr_Occurred())
+                PyErr_Print();
+            fprintf(stderr, "Cannot find function \"%s\"\n", "con");
+        }
+        Py_XDECREF(pFunc);
+        Py_DECREF(pModule);
+    }
+    else {
+        PyErr_Print();
+        fprintf(stderr, "Failed to load \"%s\"\n", "Cuurr");
+        return 1;
+    }
+    if (Py_FinalizeEx() < 0) {
+        return 120;
+    }
+    return 0;
 }
-  
+
